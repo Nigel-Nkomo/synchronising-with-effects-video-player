@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
+import VideoPlayer from "./VideoPlayer";
+import "./App.css";
 
 function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <button onClick={() => setIsPlaying(!isPlaying)}>
+        {isPlaying ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
+      </button>
+
+      <VideoPlayer
+        src="https://joy1.videvo.net/videvo_files/video/free/2012-07/small_watermarked/Transit%20of%20Venus_preview.webm"
+        isPlaying={isPlaying}
+      />
     </div>
   );
 }
